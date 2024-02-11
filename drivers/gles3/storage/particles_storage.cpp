@@ -129,7 +129,7 @@ void ParticlesStorage::particles_set_emitting(RID p_particles, bool p_emitting) 
 bool ParticlesStorage::particles_get_emitting(RID p_particles) {
 	ERR_FAIL_COND_V_MSG(RSG::threaded, false, "This function should never be used with threaded rendering, as it stalls the renderer.");
 	Particles *particles = particles_owner.get_or_null(p_particles);
-	ERR_FAIL_NULL_V(particles, false);
+	if (particles == null){cout << "The particle pointer is null"; return false;}
 
 	return particles->emitting;
 }
